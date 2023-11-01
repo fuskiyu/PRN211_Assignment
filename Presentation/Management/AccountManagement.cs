@@ -66,23 +66,18 @@ namespace Presentation
                 return;
             }
 
-            var curAccount = accountRepository.GetAll()
-                                            .Where(a => a.UserName == username)
-                                            .FirstOrDefault();
-
-            if (curAccount == null)
+            try
             {
-                MessageBox.Show("UserName existed", "Error");
-                return;
+                accountRepository.Add(new TblUser
+                {
+                    UserName = username,
+                    Password = password,
+                    Role = role
+                });
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
             }
-
-            var user = new TblUser();
-
-            user.UserName = username;
-            user.Password = password;
-            user.Role = role;
-
-            accountRepository.Add(user);
 
             txtUserName.Text = "";
             txtPassword.Text = "";

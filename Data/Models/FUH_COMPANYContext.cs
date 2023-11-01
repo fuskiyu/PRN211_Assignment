@@ -146,8 +146,6 @@ namespace Data.Models
                     .HasColumnType("decimal(18, 0)")
                     .HasColumnName("empSSN");
 
-                entity.Property(e => e.BaseSalary).HasColumnName("baseSalary");
-
                 entity.Property(e => e.DepNum).HasColumnName("depNum");
 
                 entity.Property(e => e.EmpAddress)
