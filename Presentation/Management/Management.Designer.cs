@@ -1,4 +1,4 @@
-﻿namespace Presentation
+﻿namespace Presentation.Management
 {
     partial class Management
     {
@@ -55,6 +55,7 @@
             btnEmployeeMgt.TabIndex = 7;
             btnEmployeeMgt.Text = "Employee Management";
             btnEmployeeMgt.UseVisualStyleBackColor = true;
+            btnEmployeeMgt.Click += btnEmployeeMgt_Click;
             // 
             // btnWorksOnMgt
             // 

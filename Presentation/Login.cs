@@ -2,6 +2,7 @@
 using Data.Repository;
 using Microsoft.VisualBasic.Logging;
 using Presentation;
+using Presentation.Management;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,14 @@ namespace ElectricStore_StudentName
             userRepository = new UserRepository();
         }
 
+        private void ShowForm(Form form)
+        {
+            form.FormClosing += (sender, e) => this.Show();
+
+            this.Hide();
+            form.Show();
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             var username = txtUserName.Text;
@@ -38,11 +47,7 @@ namespace ElectricStore_StudentName
             {
                 if (user.Role.Equals("Admin"))
                 {
-                    var management = new Management();
-                    management.FormClosing += (sender, e) => this.Show();
-
-                    this.Hide();
-                    management.Show();
+                    ShowForm(new Management());
                 }
             }
             else
@@ -53,11 +58,7 @@ namespace ElectricStore_StudentName
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            var register = new Register();
-            register.FormClosing += (sender, e) => this.Show();
-
-            this.Hide();
-            register.Show();
+            ShowForm(new Register());
         }
     }
 }

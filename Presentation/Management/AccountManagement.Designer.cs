@@ -1,4 +1,4 @@
-﻿namespace Presentation
+﻿namespace Presentation.Management
 {
     partial class AccountManagement
     {

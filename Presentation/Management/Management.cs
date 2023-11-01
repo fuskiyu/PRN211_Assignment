@@ -1,4 +1,5 @@
 ﻿using ElectricStore_StudentName;
+using Presentation.Management;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Presentation
+namespace Presentation.Management
 {
     public partial class Management : Form
     {
@@ -18,13 +19,22 @@ namespace Presentation
             InitializeComponent();
         }
 
-        private void btnAccountMgt_Click(object sender, EventArgs e)
+        private void ShowForm(Form form)
         {
-            var management = new AccountManagement();
-            management.FormClosing += (sender, e) => this.Show();
+            form.FormClosing += (sender, e) => this.Show();
 
             this.Hide();
-            management.Show();
+            form.Show();
+        }
+
+        private void btnAccountMgt_Click(object sender, EventArgs e)
+        {
+           ShowForm(new AccountManagement());
+        }
+
+        private void btnEmployeeMgt_Click(object sender, EventArgs e)
+        {
+            ShowForm(new EmployeeManagement());
         }
     }
 }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace Presentation
+namespace Presentation.Management
 {
     public partial class AccountManagement : Form
     {
@@ -37,6 +37,7 @@ namespace Presentation
             btnUpdate.Enabled = !enable;
 
             txtUserName.ReadOnly = !enable;
+            txtPassword.ReadOnly = !enable;
         }
 
         private void dgvInfo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -68,12 +69,12 @@ namespace Presentation
 
             try
             {
-                accountRepository.Add(new TblUser
-                {
-                    UserName = username,
-                    Password = password,
-                    Role = role
-                });
+                var account = new TblUser();
+                account.UserName = username;
+                account.Password = password;
+                account.Role = role;
+
+                accountRepository.Add(account);
             } catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error");
