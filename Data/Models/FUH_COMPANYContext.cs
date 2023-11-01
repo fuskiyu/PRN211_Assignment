@@ -24,15 +24,16 @@ namespace Data.Models
         public virtual DbSet<TblEmployee> TblEmployees { get; set; }
         public virtual DbSet<TblLocation> TblLocations { get; set; }
         public virtual DbSet<TblProject> TblProjects { get; set; }
+        public virtual DbSet<TblUser> TblUsers { get; set; }
         public virtual DbSet<TblWorksOn> TblWorksOns { get; set; }
 
         private string GetConnectionString()
         {
             IConfiguration config = new ConfigurationBuilder()
-                 .SetBasePath(Directory.GetCurrentDirectory())
-                        .AddJsonFile("appsettings.json", true, true)
-                        .Build();
-            var strConn = config["ConnectionStrings: DefaultConnectionStringDB "];
+             .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", true, true)
+            .Build();
+            var strConn = config["ConnectionStrings:DefaultConnectionStringDB"];
 
             return strConn;
         }
@@ -229,6 +230,25 @@ namespace Data.Models
                     .WithMany(p => p.TblProjects)
                     .HasForeignKey(d => d.LocNum)
                     .HasConstraintName("FK_tblProject_tblLocation");
+            });
+
+            modelBuilder.Entity<TblUser>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("tblUser");
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Role)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UserName)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<TblWorksOn>(entity =>
