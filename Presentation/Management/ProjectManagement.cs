@@ -1,7 +1,9 @@
+
 ﻿using Data.Models;
 using Data.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,7 +27,7 @@ namespace Presentation.Management
         public void GetAll()
         {
             dataGridView1.DataSource = _proRepo.getAll().Select(p => new
-            {   
+            {
                 proNum = p.ProNum,
                 proName = p.ProName,
                 locNum = p.LocNum,

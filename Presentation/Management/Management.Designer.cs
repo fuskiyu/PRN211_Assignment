@@ -91,7 +91,7 @@
             btnProjectMgt.TabIndex = 10;
             btnProjectMgt.Text = "Project Management";
             btnProjectMgt.UseVisualStyleBackColor = true;
-            btnProjectMgt.Click += btnProjectMgt_Click;
+            btnProjectMgt.Click += btnProjectMgt_Click_1;
             // 
             // Management
             // 

@@ -41,7 +41,7 @@ namespace Presentation.Management
             ShowForm(new EmployeeManagement());
         }
 
-        private void btnProjectMgt_Click(object sender, EventArgs e)
+        private void btnProjectMgt_Click_1(object sender, EventArgs e)
         {
             ShowForm(new ProjectManagement(dbContext));
         }
