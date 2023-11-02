@@ -38,7 +38,6 @@ namespace Data.Models
             return strConn;
         }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -234,9 +233,13 @@ namespace Data.Models
 
             modelBuilder.Entity<TblUser>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.UserName);
 
                 entity.ToTable("tblUser");
+
+                entity.Property(e => e.UserName)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Password)
                     .HasMaxLength(20)
@@ -244,10 +247,6 @@ namespace Data.Models
 
                 entity.Property(e => e.Role)
                     .HasMaxLength(10)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserName)
-                    .HasMaxLength(20)
                     .IsUnicode(false);
             });
 

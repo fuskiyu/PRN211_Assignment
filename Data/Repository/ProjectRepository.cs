@@ -14,6 +14,7 @@ namespace Data.Repository
         {
             _dbContext = dcContext;
         }
+<<<<<<< HEAD
         public List<TblProject> getAll()
         {
             return _dbContext.TblProjects.ToList();
@@ -28,5 +29,7 @@ namespace Data.Repository
             _dbContext.TblProjects.Remove(delProject);
             return _dbContext.SaveChanges();
         }
+=======
+>>>>>>> 772480919941ef52da7beb35d712d4681c038e12
     }
 }
