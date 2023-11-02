@@ -14,7 +14,6 @@ namespace Data.Repository
         {
             _dbContext = dcContext;
         }
-
         public List<TblProject> getAll()
         {
             return _dbContext.TblProjects.ToList();
