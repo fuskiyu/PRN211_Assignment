@@ -1,0 +1,49 @@
+﻿using Data.Models;
+using Data.Repository;
+using ElectricStore_StudentName;
+using Microsoft.EntityFrameworkCore;
+using Presentation.Management;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Presentation.Management
+{
+    public partial class Management : Form
+    {
+        FUH_COMPANYContext dbContext = new FUH_COMPANYContext();
+        public Management()
+        {
+            InitializeComponent();
+        }
+
+        private void ShowForm(Form form)
+        {
+            form.FormClosing += (sender, e) => this.Show();
+
+            this.Hide();
+            form.Show();
+        }
+
+        private void btnAccountMgt_Click(object sender, EventArgs e)
+        {
+            ShowForm(new AccountManagement());
+        }
+
+        private void btnEmployeeMgt_Click(object sender, EventArgs e)
+        {
+            ShowForm(new EmployeeManagement());
+        }
+
+        private void btnProjectMgt_Click(object sender, EventArgs e)
+        {
+            ShowForm(new ProjectManagement(dbContext));
+        }
+    }
+}
