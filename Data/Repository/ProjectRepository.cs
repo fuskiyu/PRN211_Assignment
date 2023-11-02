@@ -14,5 +14,22 @@ namespace Data.Repository
         {
             _dbContext = dcContext;
         }
+<<<<<<< HEAD
+        public List<TblProject> getAll()
+        {
+            return _dbContext.TblProjects.ToList();
+        }
+        public TblProject getById(int id)
+        {
+            return _dbContext.TblProjects.FirstOrDefault(p => p.ProNum == id) ?? throw new Exception("Project not found");
+        }
+        public int deleteProject(int id)
+        {
+            var delProject = _dbContext.TblProjects.Find(id) ?? throw new Exception("Project not found");
+            _dbContext.TblProjects.Remove(delProject);
+            return _dbContext.SaveChanges();
+        }
+=======
+>>>>>>> 772480919941ef52da7beb35d712d4681c038e12
     }
 }
