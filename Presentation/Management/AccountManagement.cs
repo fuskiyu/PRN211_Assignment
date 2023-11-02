@@ -22,10 +22,10 @@ namespace Presentation.Management
             InitializeComponent();
 
             accountRepository = new UserRepository();
-            renderView();
+            RenderView();
         }
 
-        private void renderView()
+        private void RenderView()
         {
             var list = accountRepository.GetAll().ToList();
             dgvInfo.DataSource = list;
@@ -37,7 +37,14 @@ namespace Presentation.Management
             btnUpdate.Enabled = !enable;
 
             txtUserName.ReadOnly = !enable;
-            txtPassword.ReadOnly = !enable;
+            txtPassword.ReadOnly = !enable;            
+        }
+
+        private void EmptyText()
+        {
+            txtUserName.Text = "";
+            txtPassword.Text = "";
+            txtRole.Text = "";
         }
 
         private void dgvInfo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -52,7 +59,7 @@ namespace Presentation.Management
             txtPassword.Text = password;
             txtRole.Text = role;
 
-            renderView();
+            RenderView();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -67,6 +74,16 @@ namespace Presentation.Management
                 return;
             }
 
+            var curAccount = accountRepository.GetAll()
+                                            .Where(a => a.UserName == username)
+                                            .First();
+
+            if (curAccount != null)
+            {
+                MessageBox.Show("Account existed", "Error");
+                return;
+            }
+
             try
             {
                 var account = new TblUser();
@@ -75,16 +92,14 @@ namespace Presentation.Management
                 account.Role = role;
 
                 accountRepository.Add(account);
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error");
             }
 
-            txtUserName.Text = "";
-            txtPassword.Text = "";
-            txtRole.Text = "";
-
-            renderView();
+            EmptyText();
+            RenderView();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -101,7 +116,13 @@ namespace Presentation.Management
 
             var curAccount = accountRepository.GetAll()
                                             .Where(a => a.UserName == username)
-                                            .First();
+                                            .FirstOrDefault();
+
+            if (curAccount == null)
+            {
+                MessageBox.Show("UserName not found", "Error");
+                return;
+            }
 
             curAccount.UserName = username;
             curAccount.Password = password;
@@ -109,11 +130,8 @@ namespace Presentation.Management
 
             accountRepository.Update(curAccount);
 
-            txtUserName.Text = "";
-            txtPassword.Text = "";
-            txtRole.Text = "";
-
-            renderView();
+            EmptyText();
+            RenderView();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -129,11 +147,8 @@ namespace Presentation.Management
                 accountRepository.Delete(curAccount);
             }
 
-            txtUserName.Text = "";
-            txtPassword.Text = "";
-            txtRole.Text = "";
-
-            renderView();
+            EmptyText();
+            RenderView();
         }
     }
 }

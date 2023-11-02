@@ -40,16 +40,18 @@
             lbUserName = new Label();
             txtSalary = new TextBox();
             label2 = new Label();
-            txtGender = new TextBox();
             label3 = new Label();
             label4 = new Label();
             dtpBirthDate = new DateTimePicker();
-            txtDepNum = new TextBox();
             label5 = new Label();
             txtSupervisorID = new TextBox();
             label6 = new Label();
             label7 = new Label();
             dtpStartDate = new DateTimePicker();
+            cbGender = new ComboBox();
+            cbDepNum = new ComboBox();
+            btnCancel = new Button();
+            btnDetail = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvInfo).BeginInit();
             SuspendLayout();
             // 
@@ -76,7 +78,7 @@
             btnDelete.Enabled = false;
             btnDelete.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnDelete.ForeColor = Color.Red;
-            btnDelete.Location = new Point(626, 476);
+            btnDelete.Location = new Point(117, 605);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(91, 34);
             btnDelete.TabIndex = 22;
@@ -88,7 +90,7 @@
             // 
             btnUpdate.Enabled = false;
             btnUpdate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdate.Location = new Point(495, 476);
+            btnUpdate.Location = new Point(230, 605);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(91, 34);
             btnUpdate.TabIndex = 21;
@@ -99,7 +101,7 @@
             // btnAdd
             // 
             btnAdd.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdd.Location = new Point(364, 476);
+            btnAdd.Location = new Point(230, 549);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(91, 34);
             btnAdd.TabIndex = 20;
@@ -128,12 +130,13 @@
             // dgvInfo
             // 
             dgvInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInfo.Location = new Point(364, 12);
+            dgvInfo.Location = new Point(355, 12);
             dgvInfo.Name = "dgvInfo";
             dgvInfo.RowHeadersWidth = 51;
             dgvInfo.RowTemplate.Height = 29;
-            dgvInfo.Size = new Size(738, 426);
+            dgvInfo.Size = new Size(1206, 866);
             dgvInfo.TabIndex = 17;
+            dgvInfo.CellDoubleClick += dgvInfo_CellDoubleClick;
             // 
             // txtID
             // 
@@ -171,14 +174,6 @@
             label2.TabIndex = 25;
             label2.Text = "Salary";
             // 
-            // txtGender
-            // 
-            txtGender.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtGender.Location = new Point(145, 248);
-            txtGender.Name = "txtGender";
-            txtGender.Size = new Size(176, 34);
-            txtGender.TabIndex = 28;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -207,14 +202,6 @@
             dtpBirthDate.Name = "dtpBirthDate";
             dtpBirthDate.Size = new Size(176, 27);
             dtpBirthDate.TabIndex = 31;
-            // 
-            // txtDepNum
-            // 
-            txtDepNum.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDepNum.Location = new Point(145, 362);
-            txtDepNum.Name = "txtDepNum";
-            txtDepNum.Size = new Size(176, 34);
-            txtDepNum.TabIndex = 33;
             // 
             // label5
             // 
@@ -263,20 +250,62 @@
             dtpStartDate.Size = new Size(176, 27);
             dtpStartDate.TabIndex = 38;
             // 
+            // cbGender
+            // 
+            cbGender.FormattingEnabled = true;
+            cbGender.Location = new Point(145, 251);
+            cbGender.Name = "cbGender";
+            cbGender.Size = new Size(176, 28);
+            cbGender.TabIndex = 39;
+            // 
+            // cbDepNum
+            // 
+            cbDepNum.FormattingEnabled = true;
+            cbDepNum.Location = new Point(145, 366);
+            cbDepNum.Name = "cbDepNum";
+            cbDepNum.Size = new Size(176, 28);
+            cbDepNum.TabIndex = 40;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancel.ForeColor = SystemColors.HotTrack;
+            btnCancel.Location = new Point(230, 662);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(91, 34);
+            btnCancel.TabIndex = 41;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // btnDetail
+            // 
+            btnDetail.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDetail.ForeColor = SystemColors.HotTrack;
+            btnDetail.Location = new Point(75, 662);
+            btnDetail.Name = "btnDetail";
+            btnDetail.Size = new Size(133, 34);
+            btnDetail.TabIndex = 42;
+            btnDetail.Text = "View Details";
+            btnDetail.UseVisualStyleBackColor = true;
+            btnDetail.Click += btnDetail_Click;
+            // 
             // EmployeeManagement
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1114, 550);
+            ClientSize = new Size(1575, 890);
+            Controls.Add(btnDetail);
+            Controls.Add(btnCancel);
+            Controls.Add(cbDepNum);
+            Controls.Add(cbGender);
             Controls.Add(dtpStartDate);
             Controls.Add(label7);
             Controls.Add(txtSupervisorID);
             Controls.Add(label6);
-            Controls.Add(txtDepNum);
             Controls.Add(label5);
             Controls.Add(dtpBirthDate);
             Controls.Add(label4);
-            Controls.Add(txtGender);
             Controls.Add(label3);
             Controls.Add(txtSalary);
             Controls.Add(label2);
@@ -311,15 +340,17 @@
         private Label lbUserName;
         private TextBox txtSalary;
         private Label label2;
-        private TextBox txtGender;
         private Label label3;
         private Label label4;
         private DateTimePicker dtpBirthDate;
-        private TextBox txtDepNum;
         private Label label5;
         private TextBox txtSupervisorID;
         private Label label6;
         private Label label7;
         private DateTimePicker dtpStartDate;
+        private ComboBox cbGender;
+        private ComboBox cbDepNum;
+        private Button btnCancel;
+        private Button btnDetail;
     }
 }

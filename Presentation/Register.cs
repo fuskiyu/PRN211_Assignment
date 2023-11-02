@@ -29,6 +29,12 @@ namespace Presentation
             var username = txtUserName.Text;
             var password = txtPassword.Text;
 
+            if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Missing require field", "Error");
+                return;
+            }
+
             var user = userRepository.GetAll()
                         .Where(u => u.UserName.Equals(username) && u.Password.Equals(password))
                         .FirstOrDefault();
