@@ -14,17 +14,19 @@ namespace Data.Repository
         {
             _dbContext = dcContext;
         }
-        public ProjectRepository getAll()
+        public List<TblProject> getAll()
         {
             return _dbContext.TblProjects.ToList();
         }
-        public ProjectRepository getById(int id)
+        public TblProject getById(int id)
         {
-            return _dbContext.TblProjects.FirstOrDefault(p => p.Id == id);
+            return _dbContext.TblProjects.FirstOrDefault(p => p.ProNum == id) ?? throw new Exception("Project not found");
         }
         public int deleteProject(int id)
         {
-            _dbContext.TblProjects.Remove(p => p.Id == id);
+            var delProject = _dbContext.TblProjects.Find(id) ?? throw new Exception("Project not found");
+            _dbContext.TblProjects.Remove(delProject);
+            return _dbContext.SaveChanges();
         }
     }
 }
