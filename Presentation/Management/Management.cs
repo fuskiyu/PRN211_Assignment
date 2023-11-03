@@ -17,7 +17,6 @@ namespace Presentation.Management
 {
     public partial class Management : Form
     {
-        FUH_COMPANYContext dbContext = new FUH_COMPANYContext();
         public Management()
         {
             InitializeComponent();
@@ -44,6 +43,11 @@ namespace Presentation.Management
         private void btnProjectMgt_Click_1(object sender, EventArgs e)
         {
             ShowForm(new ProjectManagement());
+        }
+
+        private void btnWorksOnMgt_Click(object sender, EventArgs e)
+        {
+            ShowForm (new WorkOnManager ());    
         }
 
         private void btnDependentMgt_Click(object sender, EventArgs e)

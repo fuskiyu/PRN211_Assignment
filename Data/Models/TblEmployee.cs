@@ -24,6 +24,7 @@ namespace Data.Models
         public int? DepNum { get; set; }
         public decimal? SupervisorSsn { get; set; }
         public DateTime? EmpStartdate { get; set; }
+        public bool? Active { get; set; }
 
         public virtual TblDepartment DepNumNavigation { get; set; }
         public virtual TblEmployee SupervisorSsnNavigation { get; set; }

@@ -66,6 +66,7 @@
             btnWorksOnMgt.TabIndex = 8;
             btnWorksOnMgt.Text = "Works On Management";
             btnWorksOnMgt.UseVisualStyleBackColor = true;
+            btnWorksOnMgt.Click += btnWorksOnMgt_Click;
             // 
             // btnDependentMgt
             // 

@@ -22,13 +22,13 @@ namespace Presentation.Management
     {
         private readonly ProjectRepository _proRepo;
         private readonly DepartmentRepository _departmentRepo;
-        private readonly FUH_COMPANYContext _dbContext;
+        private readonly CompanyManagementContext _dbContext;
         public ProjectManagement()
         {
             InitializeComponent();
             _departmentRepo = new DepartmentRepository();
             _proRepo = new ProjectRepository();
-            _dbContext = new FUH_COMPANYContext();
+            _dbContext = new CompanyManagementContext();
             GetAll();
         }
         private void ClearTextBox()

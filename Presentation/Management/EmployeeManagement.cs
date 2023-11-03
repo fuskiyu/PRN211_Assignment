@@ -55,7 +55,8 @@ namespace Presentation.Management
                                              DepNum = e.DepNum,
                                              DepLocation = e.DepNumNavigation.DepName,
                                              SupervisorID = e.SupervisorSsn,
-                                             StartDate = e.EmpStartdate
+                                             StartDate = e.EmpStartdate,
+                                             Active = e.Active,
                                          })
                                          .ToList();
             dgvInfo.DataSource = list;
@@ -91,6 +92,7 @@ namespace Presentation.Management
             cbDepNum.Text = row.Cells[6].Value?.ToString();
             txtSupervisorID.Text = row.Cells[8].Value?.ToString();
             dtpStartDate.Value = (DateTime)row.Cells[9].Value;
+            cbStatus.Text = row.Cells[10].Value?.ToString();
 
             RenderView();
         }
@@ -169,6 +171,7 @@ namespace Presentation.Management
             var depNum = cbDepNum.Text;
             var supervisorID = txtSupervisorID.Text;
             var startDate = dtpStartDate.Value;
+            var active = cbStatus.Text;
 
             try
             {
@@ -200,6 +203,7 @@ namespace Presentation.Management
                 curEmp.DepNum = !String.IsNullOrEmpty(depNum) ? int.Parse(depNum) : null;
                 curEmp.SupervisorSsn = !String.IsNullOrEmpty(supervisorID) ? decimal.Parse(supervisorID) : null;
                 curEmp.EmpStartdate = startDate.Date;
+                curEmp.Active = bool.Parse(active);
 
                 employeeRepository.Update(curEmp);
             }

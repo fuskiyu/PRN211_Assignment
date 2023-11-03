@@ -10,12 +10,12 @@ namespace Data
 {
     public class RepositoryBase<T> where T : class
     {
-        FUH_COMPANYContext _context;
+        CompanyManagementContext _context;
         DbSet<T> _dbSet;
 
         public RepositoryBase()
         {
-            _context = new FUH_COMPANYContext();
+            _context = new CompanyManagementContext();
             _dbSet = _context.Set<T>();
         }
 
