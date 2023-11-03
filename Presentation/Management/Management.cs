@@ -43,7 +43,7 @@ namespace Presentation.Management
 
         private void btnProjectMgt_Click_1(object sender, EventArgs e)
         {
-            ShowForm(new ProjectManagement(dbContext));
+            ShowForm(new ProjectManagement());
         }
     }
 }

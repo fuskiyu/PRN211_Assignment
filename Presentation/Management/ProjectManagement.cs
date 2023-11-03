@@ -18,15 +18,16 @@ namespace Presentation.Management
     public partial class ProjectManagement : Form
     {
         private readonly ProjectRepository _proRepo;
-        public ProjectManagement(FUH_COMPANYContext dbContext)
+        public ProjectManagement()
         {
-            _proRepo = new ProjectRepository(dbContext);
             InitializeComponent();
+
+            _proRepo = new ProjectRepository();
             GetAll();
         }
         public void GetAll()
         {
-            dataGridView1.DataSource = _proRepo.getAll().Select(p => new
+            dataGridView1.DataSource = _proRepo.GetAll().Select(p => new
             {
                 proNum = p.ProNum,
                 proName = p.ProName,
