@@ -182,21 +182,26 @@ namespace Presentation.Management
                 var proNumber = int.Parse(proNum);
                 var deleteProduct = _dbContext.TblProjects.Find(proNumber);
                 result = MessageBox.Show("Do you want to delete ?", "Warning", MessageBoxButtons.YesNo);
-                if(result == DialogResult.Yes)
+                if (result == DialogResult.Yes)
                 {
                     _proRepo.Delete(deleteProduct);
                 }
                 GetAll();
                 ClearTextBox();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
-        private void dataGridView1_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ClearTextBox();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
