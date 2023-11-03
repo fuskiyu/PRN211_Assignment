@@ -45,5 +45,12 @@ namespace Presentation.Management
         {
             ShowForm(new ProjectManagement());
         }
+
+        private void btnWorksOnMgt_Click(object sender, EventArgs e)
+        {
+            ShowForm (new WorkOnManager ());    
+
+
+        }
     }
 }

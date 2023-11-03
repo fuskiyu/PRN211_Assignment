@@ -9,5 +9,11 @@ namespace Data.Repository
 {
     public class WorksOnRepository : RepositoryBase<TblWorksOn>
     {
+        private List<TblWorksOn> worksOnData;
+        public WorksOnRepository()
+        {
+            worksOnData = new List<TblWorksOn>();
+
+        }
     }
 }
