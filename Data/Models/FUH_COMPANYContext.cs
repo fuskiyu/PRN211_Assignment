@@ -264,6 +264,12 @@ namespace Data.Models
 
                 entity.Property(e => e.WorkHours).HasColumnName("workHours");
 
+                entity.HasOne(d => d.EmpSsnNavigation)
+                    .WithMany(p => p.TblWorksOns)
+                    .HasForeignKey(d => d.EmpSsn)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_tblWorksOn_tblEmployee");
+
                 entity.HasOne(d => d.ProNumNavigation)
                     .WithMany(p => p.TblWorksOns)
                     .HasForeignKey(d => d.ProNum)

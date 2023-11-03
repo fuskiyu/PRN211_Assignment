@@ -11,6 +11,7 @@ namespace Data.Models
         public int ProNum { get; set; }
         public int? WorkHours { get; set; }
 
+        public virtual TblEmployee EmpSsnNavigation { get; set; }
         public virtual TblProject ProNumNavigation { get; set; }
     }
 }
