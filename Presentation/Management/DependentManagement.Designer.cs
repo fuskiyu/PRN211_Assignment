@@ -49,38 +49,42 @@
             // txtdepName
             // 
             txtdepName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtdepName.Location = new Point(256, 113);
+            txtdepName.Location = new Point(205, 90);
+            txtdepName.Margin = new Padding(2);
             txtdepName.Name = "txtdepName";
-            txtdepName.Size = new Size(269, 39);
+            txtdepName.Size = new Size(216, 34);
             txtdepName.TabIndex = 0;
             // 
             // lbdepName
             // 
             lbdepName.AutoSize = true;
             lbdepName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbdepName.Location = new Point(28, 113);
+            lbdepName.Location = new Point(22, 90);
+            lbdepName.Margin = new Padding(2, 0, 2, 0);
             lbdepName.Name = "lbdepName";
-            lbdepName.Size = new Size(205, 32);
+            lbdepName.Size = new Size(166, 28);
             lbdepName.TabIndex = 1;
             lbdepName.Text = "Dependent Name";
             // 
             // dgvInfor
             // 
             dgvInfor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInfor.Location = new Point(566, 21);
+            dgvInfor.Location = new Point(453, 17);
+            dgvInfor.Margin = new Padding(2);
             dgvInfor.Name = "dgvInfor";
             dgvInfor.RowHeadersWidth = 62;
             dgvInfor.RowTemplate.Height = 33;
-            dgvInfor.Size = new Size(814, 506);
+            dgvInfor.Size = new Size(651, 405);
             dgvInfor.TabIndex = 2;
-            dgvInfor.CellContentClick += dgvInfor_CellContentClick;
+            dgvInfor.CellDoubleClick += dgvInfor_CellDoubleClick;
             // 
             // btnAdd
             // 
             btnAdd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdd.Location = new Point(119, 385);
+            btnAdd.Location = new Point(95, 308);
+            btnAdd.Margin = new Padding(2);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(157, 50);
+            btnAdd.Size = new Size(126, 40);
             btnAdd.TabIndex = 3;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
@@ -89,18 +93,20 @@
             // txtempSSN
             // 
             txtempSSN.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtempSSN.Location = new Point(256, 53);
+            txtempSSN.Location = new Point(205, 42);
+            txtempSSN.Margin = new Padding(2);
             txtempSSN.Name = "txtempSSN";
-            txtempSSN.Size = new Size(269, 39);
+            txtempSSN.Size = new Size(216, 34);
             txtempSSN.TabIndex = 4;
             // 
             // lbempSSN
             // 
             lbempSSN.AutoSize = true;
             lbempSSN.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbempSSN.Location = new Point(84, 53);
+            lbempSSN.Location = new Point(67, 42);
+            lbempSSN.Margin = new Padding(2, 0, 2, 0);
             lbempSSN.Name = "lbempSSN";
-            lbempSSN.Size = new Size(149, 32);
+            lbempSSN.Size = new Size(122, 28);
             lbempSSN.TabIndex = 8;
             lbempSSN.Text = "Employee ID";
             // 
@@ -108,9 +114,10 @@
             // 
             lbdepSex.AutoSize = true;
             lbdepSex.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbdepSex.Location = new Point(141, 181);
+            lbdepSex.Location = new Point(113, 145);
+            lbdepSex.Margin = new Padding(2, 0, 2, 0);
             lbdepSex.Name = "lbdepSex";
-            lbdepSex.Size = new Size(92, 32);
+            lbdepSex.Size = new Size(76, 28);
             lbdepSex.TabIndex = 9;
             lbdepSex.Text = "Gender";
             // 
@@ -118,9 +125,10 @@
             // 
             lbdepBirthDate.AutoSize = true;
             lbdepBirthDate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbdepBirthDate.Location = new Point(119, 244);
+            lbdepBirthDate.Location = new Point(95, 195);
+            lbdepBirthDate.Margin = new Padding(2, 0, 2, 0);
             lbdepBirthDate.Name = "lbdepBirthDate";
-            lbdepBirthDate.Size = new Size(114, 32);
+            lbdepBirthDate.Size = new Size(94, 28);
             lbdepBirthDate.TabIndex = 10;
             lbdepBirthDate.Text = "BirthDate";
             // 
@@ -128,18 +136,20 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(89, 308);
+            label5.Location = new Point(71, 246);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(144, 32);
+            label5.Size = new Size(119, 28);
             label5.TabIndex = 11;
             label5.Text = "Relationship";
             // 
             // btnUpdate
             // 
             btnUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdate.Location = new Point(368, 385);
+            btnUpdate.Location = new Point(294, 308);
+            btnUpdate.Margin = new Padding(2);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(157, 50);
+            btnUpdate.Size = new Size(126, 40);
             btnUpdate.TabIndex = 12;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
@@ -148,9 +158,11 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDelete.Location = new Point(119, 477);
+            btnDelete.ForeColor = Color.Red;
+            btnDelete.Location = new Point(95, 382);
+            btnDelete.Margin = new Padding(2);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(157, 50);
+            btnDelete.Size = new Size(126, 40);
             btnDelete.TabIndex = 13;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
@@ -160,9 +172,10 @@
             // 
             cbdepSex.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbdepSex.FormattingEnabled = true;
-            cbdepSex.Location = new Point(256, 178);
+            cbdepSex.Location = new Point(205, 142);
+            cbdepSex.Margin = new Padding(2);
             cbdepSex.Name = "cbdepSex";
-            cbdepSex.Size = new Size(269, 40);
+            cbdepSex.Size = new Size(216, 36);
             cbdepSex.TabIndex = 15;
             // 
             // dtpBirthDate
@@ -170,27 +183,29 @@
             dtpBirthDate.CustomFormat = "yyyy/MM/dd";
             dtpBirthDate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpBirthDate.Format = DateTimePickerFormat.Custom;
-            dtpBirthDate.Location = new Point(256, 244);
-            dtpBirthDate.Margin = new Padding(4);
+            dtpBirthDate.Location = new Point(205, 195);
             dtpBirthDate.Name = "dtpBirthDate";
-            dtpBirthDate.Size = new Size(269, 39);
+            dtpBirthDate.Size = new Size(216, 34);
             dtpBirthDate.TabIndex = 32;
             // 
             // cbdepRelationship
             // 
             cbdepRelationship.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbdepRelationship.FormattingEnabled = true;
-            cbdepRelationship.Location = new Point(256, 305);
+            cbdepRelationship.Location = new Point(205, 244);
+            cbdepRelationship.Margin = new Padding(2);
             cbdepRelationship.Name = "cbdepRelationship";
-            cbdepRelationship.Size = new Size(269, 40);
+            cbdepRelationship.Size = new Size(216, 36);
             cbdepRelationship.TabIndex = 33;
             // 
             // btnCancel
             // 
             btnCancel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCancel.Location = new Point(368, 477);
+            btnCancel.ForeColor = SystemColors.HotTrack;
+            btnCancel.Location = new Point(294, 382);
+            btnCancel.Margin = new Padding(2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(157, 50);
+            btnCancel.Size = new Size(126, 40);
             btnCancel.TabIndex = 34;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
@@ -198,9 +213,9 @@
             // 
             // DependentManagement
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1486, 573);
+            ClientSize = new Size(1189, 458);
             Controls.Add(btnCancel);
             Controls.Add(cbdepRelationship);
             Controls.Add(dtpBirthDate);
@@ -216,6 +231,7 @@
             Controls.Add(dgvInfor);
             Controls.Add(lbdepName);
             Controls.Add(txtdepName);
+            Margin = new Padding(2);
             Name = "DependentManagement";
             Text = "DependentManagement";
             ((System.ComponentModel.ISupportInitialize)dgvInfor).EndInit();

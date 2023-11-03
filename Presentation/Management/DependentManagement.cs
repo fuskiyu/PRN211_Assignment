@@ -9,16 +9,21 @@ namespace Presentation.Management
     {
         private EmployeeRepository employeeRepository;
         private DependentRepository dependentRepository;
+        private string tempDepName { set; get; } = "";
+
         public DependentManagement()
         {
             InitializeComponent();
+
             employeeRepository = new EmployeeRepository();
             dependentRepository = new DependentRepository();
+
             var genderList = new object[] { "M", "F" };
             cbdepSex.Items.AddRange(genderList);
-            var relationList = new object[] { "Chồng", "Vợ" };
 
+            var relationList = new object[] { "Cha", "Mẹ", "Chồng", "Vợ", "Anh", "Chị", "Em", "Con" };
             cbdepRelationship.Items.AddRange(relationList);
+
             RenderView();
         }
         private void RenderView()
@@ -36,16 +41,13 @@ namespace Presentation.Management
                                          .ToList();
             dgvInfor.DataSource = list;
 
-            bool enable1 = String.IsNullOrEmpty(txtempSSN.Text);
-            bool enable = String.IsNullOrEmpty(txtdepName.Text);
+            bool enable = String.IsNullOrEmpty(txtempSSN.Text);
 
             btnAdd.Enabled = enable;
             btnDelete.Enabled = !enable;
             btnUpdate.Enabled = !enable;
 
-            txtdepName.ReadOnly = !enable;
             txtempSSN.ReadOnly = !enable;
-
         }
 
         private void EmptyText()
@@ -55,7 +57,7 @@ namespace Presentation.Management
 
         }
 
-        private void dgvInfor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvInfor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var row = dgvInfor.Rows[e.RowIndex];
             txtdepName.Text = row.Cells[0].Value.ToString();
@@ -64,8 +66,9 @@ namespace Presentation.Management
             dtpBirthDate.Value = (DateTime)row.Cells[3].Value;
             cbdepRelationship.Text = row.Cells[4].Value?.ToString();
 
-            RenderView();
+            tempDepName = txtdepName.Text ?? "";
 
+            RenderView();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -85,12 +88,7 @@ namespace Presentation.Management
 
                 if (String.IsNullOrEmpty(depname))
                 {
-                    throw new Exception("Missing depname field");
-                }
-
-                if (DateTime.Now.Year - birthDate.Year < 18)
-                {
-                    throw new Exception("Employee must be at least 18 years old");
+                    throw new Exception("Missing dependent name");
                 }
 
                 var curEmp = dependentRepository.GetAll()
@@ -98,11 +96,11 @@ namespace Presentation.Management
                                                 .FirstOrDefault();
 
                 var curDep = dependentRepository.GetAll()
-                                                .Where(e => e.DepName == depname)
+                                                .Where(e => e.DepName.Equals(depname))
                                                 .FirstOrDefault();
                 if (curEmp != null)
                 {
-                    throw new Exception("Employee ID existed");
+                    throw new Exception("Employee not found");
                 }
 
                 if (curDep != null)
@@ -141,24 +139,23 @@ namespace Presentation.Management
 
             try
             {
-
-                if (DateTime.Now.Year - birthDate.Year < 18)
-                {
-                    throw new Exception("Employee must be at least 18 years old");
-                }
-
                 var curDep = dependentRepository.GetAll()
-                                                .Where(e => e.DepName == depname)
+                                                .Where(e => e.DepName.Equals(tempDepName) && e.EmpSsn == decimal.Parse(empid))
                                                 .First();
-                
-                curDep.DepName = depname;
-                curDep.EmpSsn = decimal.Parse(empid);
-                curDep.DepSex = gender;
-                curDep.DepBirthdate = birthDate.Date;
-                curDep.DepSex = depRela;
 
+                // Cannot update directly as cannot modify key, delete first
+                dependentRepository.Delete(curDep);
 
-                dependentRepository.Update(curDep);
+                var dep = new TblDependent();
+                dep.DepName = depname;
+                dep.EmpSsn = decimal.Parse(empid);
+                dep.DepSex = gender;
+                dep.DepBirthdate = birthDate.Date;
+                dep.DepRelationship = depRela;
+
+                dependentRepository.Add(dep);
+
+                tempDepName = "";
             }
             catch (Exception ex)
             {
@@ -172,15 +169,16 @@ namespace Presentation.Management
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            var depName = txtdepName.Text;
             var empID = decimal.Parse(txtempSSN.Text);
 
             var curDep = dependentRepository.GetAll()
-                                                .Where(e => e.EmpSsn == empID)
+                                                .Where(e => e.EmpSsn == empID && e.DepName.Equals(depName))
                                                 .First();
 
             if (curDep == null)
             {
-                MessageBox.Show("Employee ID not found", "Error");
+                MessageBox.Show("Dependent not found", "Error");
                 return;
             }
 

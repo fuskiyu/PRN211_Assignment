@@ -45,5 +45,10 @@ namespace Presentation.Management
         {
             ShowForm(new ProjectManagement());
         }
+
+        private void btnDependentMgt_Click(object sender, EventArgs e)
+        {
+            ShowForm(new DependentManagement());
+        }
     }
 }
