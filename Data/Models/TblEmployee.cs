@@ -12,6 +12,7 @@ namespace Data.Models
             InverseSupervisorSsnNavigation = new HashSet<TblEmployee>();
             TblDepartments = new HashSet<TblDepartment>();
             TblDependents = new HashSet<TblDependent>();
+            TblWorksOns = new HashSet<TblWorksOn>();
         }
 
         public decimal EmpSsn { get; set; }
@@ -29,5 +30,6 @@ namespace Data.Models
         public virtual ICollection<TblEmployee> InverseSupervisorSsnNavigation { get; set; }
         public virtual ICollection<TblDepartment> TblDepartments { get; set; }
         public virtual ICollection<TblDependent> TblDependents { get; set; }
+        public virtual ICollection<TblWorksOn> TblWorksOns { get; set; }
     }
 }
