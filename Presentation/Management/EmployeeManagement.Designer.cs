@@ -30,7 +30,6 @@
         {
             txtAddress = new TextBox();
             label1 = new Label();
-            btnDelete = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
             txtName = new TextBox();
@@ -52,50 +51,36 @@
             cbDepNum = new ComboBox();
             btnCancel = new Button();
             btnDetail = new Button();
+            cbStatus = new ComboBox();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvInfo).BeginInit();
             SuspendLayout();
             // 
             // txtAddress
             // 
             txtAddress.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAddress.Location = new Point(127, 100);
-            txtAddress.Margin = new Padding(3, 2, 3, 2);
+            txtAddress.Location = new Point(145, 133);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(154, 29);
+            txtAddress.Size = new Size(175, 34);
             txtAddress.TabIndex = 24;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(50, 101);
+            label1.Location = new Point(57, 135);
             label1.Name = "label1";
-            label1.Size = new Size(66, 21);
+            label1.Size = new Size(82, 28);
             label1.TabIndex = 23;
             label1.Text = "Address";
-            // 
-            // btnDelete
-            // 
-            btnDelete.Enabled = false;
-            btnDelete.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDelete.ForeColor = Color.Red;
-            btnDelete.Location = new Point(102, 454);
-            btnDelete.Margin = new Padding(3, 2, 3, 2);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(80, 26);
-            btnDelete.TabIndex = 22;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
             btnUpdate.Enabled = false;
             btnUpdate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdate.Location = new Point(201, 454);
-            btnUpdate.Margin = new Padding(3, 2, 3, 2);
+            btnUpdate.Location = new Point(229, 659);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(80, 26);
+            btnUpdate.Size = new Size(91, 35);
             btnUpdate.TabIndex = 21;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
@@ -104,10 +89,9 @@
             // btnAdd
             // 
             btnAdd.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdd.Location = new Point(201, 412);
-            btnAdd.Margin = new Padding(3, 2, 3, 2);
+            btnAdd.Location = new Point(229, 603);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(80, 26);
+            btnAdd.Size = new Size(91, 35);
             btnAdd.TabIndex = 20;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
@@ -116,69 +100,65 @@
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(127, 58);
-            txtName.Margin = new Padding(3, 2, 3, 2);
+            txtName.Location = new Point(145, 77);
             txtName.Name = "txtName";
-            txtName.Size = new Size(154, 29);
+            txtName.Size = new Size(175, 34);
             txtName.TabIndex = 19;
             // 
             // lbPassword
             // 
             lbPassword.AutoSize = true;
             lbPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbPassword.Location = new Point(66, 58);
+            lbPassword.Location = new Point(75, 77);
             lbPassword.Name = "lbPassword";
-            lbPassword.Size = new Size(52, 21);
+            lbPassword.Size = new Size(64, 28);
             lbPassword.TabIndex = 18;
             lbPassword.Text = "Name";
             // 
             // dgvInfo
             // 
             dgvInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInfo.Location = new Point(311, 9);
-            dgvInfo.Margin = new Padding(3, 2, 3, 2);
+            dgvInfo.Location = new Point(355, 12);
             dgvInfo.Name = "dgvInfo";
             dgvInfo.RowHeadersWidth = 51;
             dgvInfo.RowTemplate.Height = 29;
-            dgvInfo.Size = new Size(1055, 650);
+            dgvInfo.Size = new Size(1206, 867);
             dgvInfo.TabIndex = 17;
             dgvInfo.CellDoubleClick += dgvInfo_CellDoubleClick;
             // 
             // txtID
             // 
             txtID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtID.Location = new Point(127, 15);
-            txtID.Margin = new Padding(3, 2, 3, 2);
+            txtID.Location = new Point(145, 20);
             txtID.Name = "txtID";
-            txtID.Size = new Size(154, 29);
+            txtID.Size = new Size(175, 34);
             txtID.TabIndex = 16;
             // 
             // lbUserName
             // 
             lbUserName.AutoSize = true;
             lbUserName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbUserName.Location = new Point(94, 16);
+            lbUserName.Location = new Point(107, 21);
             lbUserName.Name = "lbUserName";
-            lbUserName.Size = new Size(25, 21);
+            lbUserName.Size = new Size(31, 28);
             lbUserName.TabIndex = 15;
             lbUserName.Text = "ID";
             // 
             // txtSalary
             // 
             txtSalary.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSalary.Location = new Point(127, 144);
-            txtSalary.Margin = new Padding(3, 2, 3, 2);
+            txtSalary.Location = new Point(145, 192);
             txtSalary.Name = "txtSalary";
-            txtSalary.Size = new Size(154, 29);
+            txtSalary.Size = new Size(175, 34);
             txtSalary.TabIndex = 26;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(65, 144);
+            label2.Location = new Point(74, 192);
             label2.Name = "label2";
-            label2.Size = new Size(53, 21);
+            label2.Size = new Size(65, 28);
             label2.TabIndex = 25;
             label2.Text = "Salary";
             // 
@@ -186,9 +166,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(55, 187);
+            label3.Location = new Point(63, 249);
             label3.Name = "label3";
-            label3.Size = new Size(61, 21);
+            label3.Size = new Size(76, 28);
             label3.TabIndex = 27;
             label3.Text = "Gender";
             // 
@@ -196,9 +176,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(39, 230);
+            label4.Location = new Point(45, 307);
             label4.Name = "label4";
-            label4.Size = new Size(75, 21);
+            label4.Size = new Size(94, 28);
             label4.TabIndex = 29;
             label4.Text = "BirthDate";
             // 
@@ -206,38 +186,36 @@
             // 
             dtpBirthDate.CustomFormat = "yyyy/MM/dd";
             dtpBirthDate.Format = DateTimePickerFormat.Custom;
-            dtpBirthDate.Location = new Point(127, 232);
-            dtpBirthDate.Margin = new Padding(3, 2, 3, 2);
+            dtpBirthDate.Location = new Point(145, 309);
             dtpBirthDate.Name = "dtpBirthDate";
-            dtpBirthDate.Size = new Size(154, 23);
+            dtpBirthDate.Size = new Size(175, 27);
             dtpBirthDate.TabIndex = 31;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(42, 272);
+            label5.Location = new Point(48, 363);
             label5.Name = "label5";
-            label5.Size = new Size(73, 21);
+            label5.Size = new Size(91, 28);
             label5.TabIndex = 32;
             label5.Text = "DepNum";
             // 
             // txtSupervisorID
             // 
             txtSupervisorID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSupervisorID.Location = new Point(127, 314);
-            txtSupervisorID.Margin = new Padding(3, 2, 3, 2);
+            txtSupervisorID.Location = new Point(145, 419);
             txtSupervisorID.Name = "txtSupervisorID";
-            txtSupervisorID.Size = new Size(154, 29);
+            txtSupervisorID.Size = new Size(175, 34);
             txtSupervisorID.TabIndex = 35;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(9, 315);
+            label6.Location = new Point(10, 420);
             label6.Name = "label6";
-            label6.Size = new Size(104, 21);
+            label6.Size = new Size(129, 28);
             label6.TabIndex = 34;
             label6.Text = "Supervisor ID";
             // 
@@ -245,9 +223,9 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(35, 358);
+            label7.Location = new Point(40, 477);
             label7.Name = "label7";
-            label7.Size = new Size(78, 21);
+            label7.Size = new Size(99, 28);
             label7.TabIndex = 36;
             label7.Text = "Start Date";
             // 
@@ -255,38 +233,34 @@
             // 
             dtpStartDate.CustomFormat = "yyyy/MM/dd";
             dtpStartDate.Format = DateTimePickerFormat.Custom;
-            dtpStartDate.Location = new Point(127, 360);
-            dtpStartDate.Margin = new Padding(3, 2, 3, 2);
+            dtpStartDate.Location = new Point(145, 480);
             dtpStartDate.Name = "dtpStartDate";
-            dtpStartDate.Size = new Size(154, 23);
+            dtpStartDate.Size = new Size(175, 27);
             dtpStartDate.TabIndex = 38;
             // 
             // cbGender
             // 
             cbGender.FormattingEnabled = true;
-            cbGender.Location = new Point(127, 188);
-            cbGender.Margin = new Padding(3, 2, 3, 2);
+            cbGender.Location = new Point(145, 251);
             cbGender.Name = "cbGender";
-            cbGender.Size = new Size(154, 23);
+            cbGender.Size = new Size(175, 28);
             cbGender.TabIndex = 39;
             // 
             // cbDepNum
             // 
             cbDepNum.FormattingEnabled = true;
-            cbDepNum.Location = new Point(127, 274);
-            cbDepNum.Margin = new Padding(3, 2, 3, 2);
+            cbDepNum.Location = new Point(145, 365);
             cbDepNum.Name = "cbDepNum";
-            cbDepNum.Size = new Size(154, 23);
+            cbDepNum.Size = new Size(175, 28);
             cbDepNum.TabIndex = 40;
             // 
             // btnCancel
             // 
             btnCancel.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancel.ForeColor = SystemColors.HotTrack;
-            btnCancel.Location = new Point(201, 496);
-            btnCancel.Margin = new Padding(3, 2, 3, 2);
+            btnCancel.Location = new Point(229, 715);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(80, 26);
+            btnCancel.Size = new Size(91, 35);
             btnCancel.TabIndex = 41;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
@@ -296,20 +270,39 @@
             // 
             btnDetail.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnDetail.ForeColor = SystemColors.HotTrack;
-            btnDetail.Location = new Point(66, 496);
-            btnDetail.Margin = new Padding(3, 2, 3, 2);
+            btnDetail.Location = new Point(74, 715);
             btnDetail.Name = "btnDetail";
-            btnDetail.Size = new Size(116, 26);
+            btnDetail.Size = new Size(133, 35);
             btnDetail.TabIndex = 42;
             btnDetail.Text = "View Details";
             btnDetail.UseVisualStyleBackColor = true;
             btnDetail.Click += btnDetail_Click;
             // 
+            // cbStatus
+            // 
+            cbStatus.FormattingEnabled = true;
+            cbStatus.Location = new Point(145, 533);
+            cbStatus.Name = "cbStatus";
+            cbStatus.Size = new Size(175, 28);
+            cbStatus.TabIndex = 43;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(73, 531);
+            label8.Name = "label8";
+            label8.Size = new Size(66, 28);
+            label8.TabIndex = 44;
+            label8.Text = "Active";
+            // 
             // EmployeeManagement
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1378, 668);
+            ClientSize = new Size(1575, 891);
+            Controls.Add(label8);
+            Controls.Add(cbStatus);
             Controls.Add(btnDetail);
             Controls.Add(btnCancel);
             Controls.Add(cbDepNum);
@@ -326,7 +319,6 @@
             Controls.Add(label2);
             Controls.Add(txtAddress);
             Controls.Add(label1);
-            Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
             Controls.Add(btnAdd);
             Controls.Add(txtName);
@@ -334,7 +326,6 @@
             Controls.Add(dgvInfo);
             Controls.Add(txtID);
             Controls.Add(lbUserName);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "EmployeeManagement";
             Text = "EmployeeManagement";
             ((System.ComponentModel.ISupportInitialize)dgvInfo).EndInit();
@@ -346,7 +337,6 @@
 
         private TextBox txtAddress;
         private Label label1;
-        private Button btnDelete;
         private Button btnUpdate;
         private Button btnAdd;
         private TextBox txtName;
@@ -368,5 +358,7 @@
         private ComboBox cbDepNum;
         private Button btnCancel;
         private Button btnDetail;
+        private ComboBox cbStatus;
+        private Label label8;
     }
 }

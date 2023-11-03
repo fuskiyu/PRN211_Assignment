@@ -34,6 +34,9 @@ namespace Presentation.Management
                                               .ToArray();
             cbDepNum.Items.AddRange(depList);
 
+            var statusList = new object[] { true, false };
+            cbStatus.Items.AddRange(statusList);
+
             RenderView();
         }
 
@@ -60,7 +63,6 @@ namespace Presentation.Management
             bool enable = String.IsNullOrEmpty(txtID.Text);
 
             btnAdd.Enabled = enable;
-            btnDelete.Enabled = !enable;
             btnUpdate.Enabled = !enable;
             btnDetail.Enabled = !enable;
 
@@ -206,26 +208,6 @@ namespace Presentation.Management
                 MessageBox.Show(ex.Message, "Error");
                 return;
             }
-
-            EmptyText();
-            RenderView();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            var empID = decimal.Parse(txtID.Text);
-
-            var curEmp = employeeRepository.GetAll()
-                                                .Where(e => e.EmpSsn == empID)
-                                                .First();
-
-            if (curEmp == null)
-            {
-                MessageBox.Show("Employee ID not found", "Error");
-                return;
-            }
-
-            employeeRepository.Delete(curEmp);
 
             EmptyText();
             RenderView();
