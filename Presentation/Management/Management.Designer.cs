@@ -38,9 +38,10 @@
             // btnAccountMgt
             // 
             btnAccountMgt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAccountMgt.Location = new Point(274, 56);
+            btnAccountMgt.Location = new Point(240, 42);
+            btnAccountMgt.Margin = new Padding(3, 2, 3, 2);
             btnAccountMgt.Name = "btnAccountMgt";
-            btnAccountMgt.Size = new Size(277, 43);
+            btnAccountMgt.Size = new Size(242, 32);
             btnAccountMgt.TabIndex = 6;
             btnAccountMgt.Text = "Account Management";
             btnAccountMgt.UseVisualStyleBackColor = true;
@@ -49,9 +50,10 @@
             // btnEmployeeMgt
             // 
             btnEmployeeMgt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnEmployeeMgt.Location = new Point(274, 128);
+            btnEmployeeMgt.Location = new Point(240, 96);
+            btnEmployeeMgt.Margin = new Padding(3, 2, 3, 2);
             btnEmployeeMgt.Name = "btnEmployeeMgt";
-            btnEmployeeMgt.Size = new Size(277, 43);
+            btnEmployeeMgt.Size = new Size(242, 32);
             btnEmployeeMgt.TabIndex = 7;
             btnEmployeeMgt.Text = "Employee Management";
             btnEmployeeMgt.UseVisualStyleBackColor = true;
@@ -60,9 +62,10 @@
             // btnWorksOnMgt
             // 
             btnWorksOnMgt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnWorksOnMgt.Location = new Point(274, 344);
+            btnWorksOnMgt.Location = new Point(240, 258);
+            btnWorksOnMgt.Margin = new Padding(3, 2, 3, 2);
             btnWorksOnMgt.Name = "btnWorksOnMgt";
-            btnWorksOnMgt.Size = new Size(277, 43);
+            btnWorksOnMgt.Size = new Size(242, 32);
             btnWorksOnMgt.TabIndex = 8;
             btnWorksOnMgt.Text = "Works On Management";
             btnWorksOnMgt.UseVisualStyleBackColor = true;
@@ -70,9 +73,10 @@
             // btnDependentMgt
             // 
             btnDependentMgt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDependentMgt.Location = new Point(274, 200);
+            btnDependentMgt.Location = new Point(240, 150);
+            btnDependentMgt.Margin = new Padding(3, 2, 3, 2);
             btnDependentMgt.Name = "btnDependentMgt";
-            btnDependentMgt.Size = new Size(277, 43);
+            btnDependentMgt.Size = new Size(242, 32);
             btnDependentMgt.TabIndex = 9;
             btnDependentMgt.Text = "Dependent Management";
             btnDependentMgt.UseVisualStyleBackColor = true;
@@ -80,23 +84,26 @@
             // btnProjectMgt
             // 
             btnProjectMgt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnProjectMgt.Location = new Point(274, 272);
+            btnProjectMgt.Location = new Point(240, 204);
+            btnProjectMgt.Margin = new Padding(3, 2, 3, 2);
             btnProjectMgt.Name = "btnProjectMgt";
-            btnProjectMgt.Size = new Size(277, 43);
+            btnProjectMgt.Size = new Size(242, 32);
             btnProjectMgt.TabIndex = 10;
             btnProjectMgt.Text = "Project Management";
             btnProjectMgt.UseVisualStyleBackColor = true;
+            btnProjectMgt.Click += btnProjectMgt_Click_1;
             // 
             // Management
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(btnProjectMgt);
             Controls.Add(btnDependentMgt);
             Controls.Add(btnWorksOnMgt);
             Controls.Add(btnEmployeeMgt);
             Controls.Add(btnAccountMgt);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Management";
             Text = "Management";
             ResumeLayout(false);

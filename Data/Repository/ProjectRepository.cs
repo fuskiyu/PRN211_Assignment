@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,21 @@ namespace Data.Repository
         {
             _dbContext = dcContext;
         }
-
         public List<TblProject> getAll()
         {
-            return _dbContext.TblProjects.ToList();
+            var project = _dbContext.TblProjects
+                .Include(p => p.DepNumNavigation)
+                .Include(p => p.LocNumNavigation)
+                .Select(p => new TblProject
+                {
+                    ProNum = p.ProNum,
+                    ProName = p.ProName,
+                    DepNum = p.DepNum,
+                    LocNum = p.LocNum,
+                    DepNumNavigation = p.DepNumNavigation,
+                    LocNumNavigation = p.LocNumNavigation,
+                }).ToList();
+            return project;
         }
         public TblProject getById(int id)
         {

@@ -1,4 +1,7 @@
-﻿using ElectricStore_StudentName;
+﻿using Data.Models;
+using Data.Repository;
+using ElectricStore_StudentName;
+using Microsoft.EntityFrameworkCore;
 using Presentation.Management;
 using System;
 using System.Collections.Generic;
@@ -14,6 +17,7 @@ namespace Presentation.Management
 {
     public partial class Management : Form
     {
+        FUH_COMPANYContext dbContext = new FUH_COMPANYContext();
         public Management()
         {
             InitializeComponent();
@@ -29,12 +33,17 @@ namespace Presentation.Management
 
         private void btnAccountMgt_Click(object sender, EventArgs e)
         {
-           ShowForm(new AccountManagement());
+            ShowForm(new AccountManagement());
         }
 
         private void btnEmployeeMgt_Click(object sender, EventArgs e)
         {
             ShowForm(new EmployeeManagement());
+        }
+
+        private void btnProjectMgt_Click_1(object sender, EventArgs e)
+        {
+            ShowForm(new ProjectManagement(dbContext));
         }
     }
 }
