@@ -17,6 +17,7 @@ namespace Presentation.Management
             var genderList = new object[] { "M", "F" };
             cbdepSex.Items.AddRange(genderList);
             var relationList = new object[] { "Chồng", "Vợ" };
+
             cbdepRelationship.Items.AddRange(relationList);
             RenderView();
         }
