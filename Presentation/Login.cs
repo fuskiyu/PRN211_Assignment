@@ -42,13 +42,13 @@ namespace ElectricStore_StudentName
             var user = userRepository.GetAll()
                         .Where(u => u.UserName.Equals(username) && u.Password.Equals(password))
                         .AsEnumerable()
-                        .FirstOrDefault(u => u.UserName.Equals(username));
+                        .FirstOrDefault(u => u.UserName.Equals(username) && u.Password.Equals(password));
 
             if (user != null)
             {
                 if (user.Role.Equals("Admin"))
                 {
-                    ShowForm(new Management());
+                    ShowForm(new Management(user));
                 }
                 else
                 {

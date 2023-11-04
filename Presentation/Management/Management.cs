@@ -17,9 +17,13 @@ namespace Presentation.Management
 {
     public partial class Management : Form
     {
-        public Management()
+        private readonly TblUser loggedUser;
+
+        public Management(TblUser user)
         {
             InitializeComponent();
+
+            loggedUser = user;
         }
 
         private void ShowForm(Form form)
@@ -32,7 +36,7 @@ namespace Presentation.Management
 
         private void btnAccountMgt_Click(object sender, EventArgs e)
         {
-            ShowForm(new AccountManagement());
+            ShowForm(new AccountManagement(loggedUser));
         }
 
         private void btnEmployeeMgt_Click(object sender, EventArgs e)

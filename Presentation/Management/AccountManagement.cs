@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -16,10 +17,13 @@ namespace Presentation.Management
     public partial class AccountManagement : Form
     {
         private UserRepository accountRepository;
+        private readonly TblUser loggedUser;
 
-        public AccountManagement()
+        public AccountManagement(TblUser user)
         {
             InitializeComponent();
+
+            loggedUser = user;
 
             accountRepository = new UserRepository();
             RenderView();
@@ -121,6 +125,13 @@ namespace Presentation.Management
             if (curAccount == null)
             {
                 MessageBox.Show("UserName not found", "Error");
+                return;
+            }
+
+            if (curAccount.UserName.Equals(loggedUser.UserName)
+                && curAccount.Password.Equals(loggedUser.Password))
+            {
+                MessageBox.Show("Account is being used", "Error");
                 return;
             }
 
