@@ -68,7 +68,6 @@ namespace Presentation.Management
             btnDetail.Enabled = !enable;
 
             txtID.ReadOnly = !enable;
-            dtpStartDate.Enabled = !enable;
         }
 
         private void EmptyText()
@@ -92,7 +91,6 @@ namespace Presentation.Management
             dtpBirthDate.Value = (DateTime)row.Cells[5].Value;
             cbDepNum.Text = row.Cells[6].Value?.ToString();
             txtSupervisorID.Text = row.Cells[8].Value?.ToString();
-            dtpStartDate.Value = (DateTime)row.Cells[9].Value;
             cbStatus.Text = row.Cells[10].Value?.ToString();
 
             RenderView();
@@ -108,8 +106,7 @@ namespace Presentation.Management
             var birthDate = dtpBirthDate.Value;
             var depNum = cbDepNum.Text;
             var supervisorID = txtSupervisorID.Text;
-
-            var startDate = DateTime.Now;
+            var active = cbStatus.Text;
 
             try
             {
@@ -147,7 +144,8 @@ namespace Presentation.Management
                     EmpBirthdate = birthDate.Date,
                     DepNum = !String.IsNullOrEmpty(depNum) ? int.Parse(depNum) : null,
                     SupervisorSsn = !String.IsNullOrEmpty(supervisorID) ? decimal.Parse(supervisorID) : null,
-                    EmpStartdate = startDate.Date
+                    EmpStartdate = DateTime.Now.Date,
+                    Active = bool.Parse(active)
                 };
 
                 employeeRepository.Add(emp);
@@ -172,16 +170,10 @@ namespace Presentation.Management
             var birthDate = dtpBirthDate.Value;
             var depNum = cbDepNum.Text;
             var supervisorID = txtSupervisorID.Text;
-            var startDate = dtpStartDate.Value;
             var active = cbStatus.Text;
 
             try
             {
-                if (startDate > DateTime.Now)
-                {
-                    throw new Exception("startDate invalid");
-                }
-
                 if (DateTime.Now.Year - birthDate.Year < 18)
                 {
                     throw new Exception("Employee must be at least 18 years old");
@@ -223,7 +215,6 @@ namespace Presentation.Management
                 curEmp.EmpBirthdate = birthDate.Date;
                 curEmp.DepNum = !String.IsNullOrEmpty(depNum) ? int.Parse(depNum) : null;
                 curEmp.SupervisorSsn = !String.IsNullOrEmpty(supervisorID) ? decimal.Parse(supervisorID) : null;
-                curEmp.EmpStartdate = startDate.Date;
                 curEmp.Active = bool.Parse(active);
 
                 employeeRepository.Update(curEmp);

@@ -45,8 +45,6 @@
             label5 = new Label();
             txtSupervisorID = new TextBox();
             label6 = new Label();
-            label7 = new Label();
-            dtpStartDate = new DateTimePicker();
             cbGender = new ComboBox();
             cbDepNum = new ComboBox();
             btnCancel = new Button();
@@ -78,7 +76,7 @@
             // 
             btnUpdate.Enabled = false;
             btnUpdate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdate.Location = new Point(229, 659);
+            btnUpdate.Location = new Point(229, 589);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(91, 35);
             btnUpdate.TabIndex = 21;
@@ -89,7 +87,7 @@
             // btnAdd
             // 
             btnAdd.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdd.Location = new Point(229, 603);
+            btnAdd.Location = new Point(229, 533);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(91, 35);
             btnAdd.TabIndex = 20;
@@ -219,25 +217,6 @@
             label6.TabIndex = 34;
             label6.Text = "Supervisor ID";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(40, 477);
-            label7.Name = "label7";
-            label7.Size = new Size(99, 28);
-            label7.TabIndex = 36;
-            label7.Text = "Start Date";
-            // 
-            // dtpStartDate
-            // 
-            dtpStartDate.CustomFormat = "yyyy/MM/dd";
-            dtpStartDate.Format = DateTimePickerFormat.Custom;
-            dtpStartDate.Location = new Point(145, 480);
-            dtpStartDate.Name = "dtpStartDate";
-            dtpStartDate.Size = new Size(175, 27);
-            dtpStartDate.TabIndex = 38;
-            // 
             // cbGender
             // 
             cbGender.FormattingEnabled = true;
@@ -258,7 +237,7 @@
             // 
             btnCancel.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancel.ForeColor = SystemColors.HotTrack;
-            btnCancel.Location = new Point(229, 715);
+            btnCancel.Location = new Point(229, 645);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(91, 35);
             btnCancel.TabIndex = 41;
@@ -270,7 +249,7 @@
             // 
             btnDetail.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnDetail.ForeColor = SystemColors.HotTrack;
-            btnDetail.Location = new Point(74, 715);
+            btnDetail.Location = new Point(74, 645);
             btnDetail.Name = "btnDetail";
             btnDetail.Size = new Size(133, 35);
             btnDetail.TabIndex = 42;
@@ -281,7 +260,7 @@
             // cbStatus
             // 
             cbStatus.FormattingEnabled = true;
-            cbStatus.Location = new Point(145, 533);
+            cbStatus.Location = new Point(144, 479);
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(175, 28);
             cbStatus.TabIndex = 43;
@@ -290,7 +269,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(73, 531);
+            label8.Location = new Point(72, 479);
             label8.Name = "label8";
             label8.Size = new Size(66, 28);
             label8.TabIndex = 44;
@@ -307,8 +286,6 @@
             Controls.Add(btnCancel);
             Controls.Add(cbDepNum);
             Controls.Add(cbGender);
-            Controls.Add(dtpStartDate);
-            Controls.Add(label7);
             Controls.Add(txtSupervisorID);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -352,8 +329,6 @@
         private Label label5;
         private TextBox txtSupervisorID;
         private Label label6;
-        private Label label7;
-        private DateTimePicker dtpStartDate;
         private ComboBox cbGender;
         private ComboBox cbDepNum;
         private Button btnCancel;
