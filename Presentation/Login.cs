@@ -41,7 +41,8 @@ namespace ElectricStore_StudentName
 
             var user = userRepository.GetAll()
                         .Where(u => u.UserName.Equals(username) && u.Password.Equals(password))
-                        .FirstOrDefault();
+                        .AsEnumerable()
+                        .FirstOrDefault(u => u.UserName.Equals(username));
 
             if (user != null)
             {
@@ -49,10 +50,14 @@ namespace ElectricStore_StudentName
                 {
                     ShowForm(new Management());
                 }
+                else
+                {
+                    MessageBox.Show("User is not allowed to access", "Error");
+                }
             }
             else
             {
-                MessageBox.Show("Sai tài khoản hoặc mật khẩu", "Error");
+                MessageBox.Show("Wrong username or password", "Error");
             }
         }
 

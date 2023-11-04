@@ -144,7 +144,14 @@ namespace Presentation.Management
 
             if (curAccount != null)
             {
-                accountRepository.Delete(curAccount);
+                if (curAccount.Role.Equals("Admin"))
+                {
+                    MessageBox.Show("Admin account cannot be deleted", "Error");
+                }
+                else
+                {
+                    accountRepository.Delete(curAccount);
+                }
             }
 
             EmptyText();
