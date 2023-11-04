@@ -68,6 +68,7 @@ namespace Presentation.Management
             btnDetail.Enabled = !enable;
 
             txtID.ReadOnly = !enable;
+            dtpStartDate.Enabled = !enable;
         }
 
         private void EmptyText()
@@ -107,7 +108,8 @@ namespace Presentation.Management
             var birthDate = dtpBirthDate.Value;
             var depNum = cbDepNum.Text;
             var supervisorID = txtSupervisorID.Text;
-            var startDate = dtpStartDate.Value;
+
+            var startDate = DateTime.Now;
 
             try
             {
@@ -116,14 +118,14 @@ namespace Presentation.Management
                     throw new Exception("Missing id field");
                 }
 
-                if (startDate > DateTime.Now)
-                {
-                    throw new Exception("startDate invalid");
-                }
-
                 if (DateTime.Now.Year - birthDate.Year < 18)
                 {
                     throw new Exception("Employee must be at least 18 years old");
+                }
+
+                if (id.Equals(supervisorID))
+                {
+                    throw new Exception("Employee ID and Supervisor ID is the same");
                 }
 
                 var curEmp = employeeRepository.GetAll()
@@ -185,6 +187,11 @@ namespace Presentation.Management
                     throw new Exception("Employee must be at least 18 years old");
                 }
 
+                if (id.Equals(supervisorID))
+                {
+                    throw new Exception("Employee ID and Supervisor ID is the same");
+                }
+
                 var curEmp = employeeRepository.GetAll()
                                                 .Where(e => e.EmpSsn == decimal.Parse(id))
                                                 .First();
@@ -193,6 +200,20 @@ namespace Presentation.Management
                 {
                     throw new Exception("Employee ID not found");
                 }
+
+                // Not allowing update manager of employee if that manager is under the updating employee management
+                if (!String.IsNullOrEmpty(supervisorID))
+                {
+                    var supervisorEmp = employeeRepository.GetAll()
+                                                          .Where(e => e.EmpSsn == decimal.Parse(supervisorID))
+                                                          .First();
+
+                    if (supervisorEmp.SupervisorSsn == curEmp.EmpSsn)
+                    {
+                        throw new Exception($"{id} is supervisor of {supervisorID}");
+                    }
+                }
+
 
                 curEmp.EmpSsn = decimal.Parse(id);
                 curEmp.EmpName = name;
