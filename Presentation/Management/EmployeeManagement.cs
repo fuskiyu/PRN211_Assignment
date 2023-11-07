@@ -44,6 +44,7 @@ namespace Presentation.Management
         {
             var list = employeeRepository.GetAll()
                                          .Include(e => e.DepNumNavigation)
+                                         .OrderBy(e => e.DepNum)
                                          .Select(e => new
                                          {
                                              ID = e.EmpSsn,
@@ -57,6 +58,7 @@ namespace Presentation.Management
                                              SupervisorID = e.SupervisorSsn,
                                              StartDate = e.EmpStartdate,
                                              Active = e.Active,
+                                             EndDate = e.EmpEnddate
                                          })
                                          .ToList();
             dgvInfo.DataSource = list;
@@ -68,6 +70,7 @@ namespace Presentation.Management
             btnDetail.Enabled = !enable;
 
             txtID.ReadOnly = !enable;
+            cbStatus.Enabled = !enable;
         }
 
         private void EmptyText()
@@ -106,14 +109,32 @@ namespace Presentation.Management
             var birthDate = dtpBirthDate.Value;
             var depNum = cbDepNum.Text;
             var supervisorID = txtSupervisorID.Text;
-            var active = cbStatus.Text;
 
             try
             {
                 if (String.IsNullOrEmpty(id))
-                {
                     throw new Exception("Missing id field");
+
+                if (string.IsNullOrEmpty(name))
+                    throw new Exception("Missing name field");
+
+                if (string.IsNullOrEmpty(address))
+                    throw new Exception("Missing address field");
+
+                if (string.IsNullOrEmpty(salary))
+                    throw new Exception("Missing salary field");
+
+                if (string.IsNullOrEmpty(gender))
+                    throw new Exception("Missing gender field");
+
+                if (string.IsNullOrEmpty(depNum))
+                    throw new Exception("Missing depNum field");
+
+                if (id.Length < 11)
+                {
+                    throw new Exception("Id length must >= 11");
                 }
+
 
                 if (DateTime.Now.Year - birthDate.Year < 18)
                 {
@@ -123,6 +144,28 @@ namespace Presentation.Management
                 if (id.Equals(supervisorID))
                 {
                     throw new Exception("Employee ID and Supervisor ID is the same");
+                }
+
+                if (!string.IsNullOrEmpty(supervisorID))
+                {
+                    var mgr = employeeRepository.GetAll()
+                                                .Where(e => e.EmpSsn == decimal.Parse(supervisorID))
+                                                .FirstOrDefault();
+
+                    if (mgr == null)
+                    {
+                        throw new Exception("Manager not found");
+                    }
+
+                    if (!mgr.Active.Value)
+                    {
+                        throw new Exception("Manager is not active");
+                    }
+
+                    if (mgr.DepNum != int.Parse(depNum))
+                    {
+                        throw new Exception("Manager is not in the same department");
+                    }
                 }
 
                 var curEmp = employeeRepository.GetAll()
@@ -145,7 +188,7 @@ namespace Presentation.Management
                     DepNum = !String.IsNullOrEmpty(depNum) ? int.Parse(depNum) : null,
                     SupervisorSsn = !String.IsNullOrEmpty(supervisorID) ? decimal.Parse(supervisorID) : null,
                     EmpStartdate = DateTime.Now.Date,
-                    Active = bool.Parse(active)
+                    Active = true
                 };
 
                 employeeRepository.Add(emp);
@@ -170,7 +213,7 @@ namespace Presentation.Management
             var birthDate = dtpBirthDate.Value;
             var depNum = cbDepNum.Text;
             var supervisorID = txtSupervisorID.Text;
-            var active = cbStatus.Text;
+            var active = bool.Parse(cbStatus.Text);
 
             try
             {
@@ -193,17 +236,73 @@ namespace Presentation.Management
                     throw new Exception("Employee ID not found");
                 }
 
-                // Not allowing update manager of employee if that manager is under the updating employee management
                 if (!String.IsNullOrEmpty(supervisorID))
                 {
-                    var supervisorEmp = employeeRepository.GetAll()
-                                                          .Where(e => e.EmpSsn == decimal.Parse(supervisorID))
-                                                          .First();
+                    var mgr = employeeRepository.GetAll()
+                                                .Where(e => e.EmpSsn == decimal.Parse(supervisorID))
+                                                .FirstOrDefault();
 
-                    if (supervisorEmp.SupervisorSsn == curEmp.EmpSsn)
+                    if (mgr == null)
+                    {
+                        throw new Exception("Manager not found");
+                    }
+
+                    if (mgr.SupervisorSsn == curEmp.EmpSsn)
                     {
                         throw new Exception($"{id} is supervisor of {supervisorID}");
                     }
+
+                    if (!mgr.Active.Value)
+                    {
+                        throw new Exception("Manager is not active");
+                    }
+
+                    if (mgr.DepNum != int.Parse(depNum))
+                    {
+                        throw new Exception("Manager is not in the same department");
+                    }
+
+                    var depMgr = departmentRepository.GetAll()
+                                                     .Where(d => d.DepNum == curEmp.DepNum && d.MgrSsn == curEmp.EmpSsn)
+                                                     .FirstOrDefault();
+                    if (depMgr != null)
+                    {
+                        throw new Exception("This employee is the department's manager");
+                    }
+                }
+
+                // set end date if deactivate emp when currently active
+                if (!active && curEmp.Active.Value)
+                {
+                    curEmp.EmpEnddate = DateTime.Now.Date;
+                }
+                else if (active)
+                {
+                    curEmp.EmpEnddate = null;
+                }
+
+                // set mgrID of employee under management to null if deactivate employee or employee department is changed
+                if ((!active && curEmp.Active.Value) || curEmp.DepNum != int.Parse(depNum))
+                {
+                    // check to not allowing modify if emp is department's manager
+                    var depMgr = departmentRepository.GetAll()
+                                                     .Where(d => d.DepNum == curEmp.DepNum && d.MgrSsn == curEmp.EmpSsn)
+                                                     .FirstOrDefault();
+                    if (depMgr != null)
+                    {
+                        throw new Exception($"This employee is the manager of department");
+                    }
+
+                    var empUnderMgt = employeeRepository.GetAll()
+                                                        .Where(e => e.SupervisorSsn == curEmp.EmpSsn)
+                                                        .ToList();
+
+                    foreach (var emp in empUnderMgt)
+                    {
+                        emp.SupervisorSsn = null;
+                    }
+
+                    employeeRepository.UpdateRange(empUnderMgt);
                 }
 
 
@@ -215,7 +314,7 @@ namespace Presentation.Management
                 curEmp.EmpBirthdate = birthDate.Date;
                 curEmp.DepNum = !String.IsNullOrEmpty(depNum) ? int.Parse(depNum) : null;
                 curEmp.SupervisorSsn = !String.IsNullOrEmpty(supervisorID) ? decimal.Parse(supervisorID) : null;
-                curEmp.Active = bool.Parse(active);
+                curEmp.Active = active;
 
                 employeeRepository.Update(curEmp);
             }

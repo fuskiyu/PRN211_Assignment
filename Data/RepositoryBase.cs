@@ -38,6 +38,12 @@ namespace Data
             _context.SaveChanges();
         }
 
+        public void UpdateRange(List<T> entities)
+        {
+            _dbSet.UpdateRange(entities);
+            _context.SaveChanges();
+        }
+
         public IQueryable<T> GetAll()
         {
             return _dbSet;

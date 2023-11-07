@@ -51,12 +51,17 @@ namespace Presentation.Management
 
         private void btnWorksOnMgt_Click(object sender, EventArgs e)
         {
-            ShowForm (new WorkOnManager ());    
+            ShowForm(new WorkOnManager());
         }
 
         private void btnDependentMgt_Click(object sender, EventArgs e)
         {
             ShowForm(new DependentManagement());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShowForm(new DepartmentManagement());
         }
     }
 }

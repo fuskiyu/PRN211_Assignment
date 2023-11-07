@@ -33,12 +33,13 @@
             btnWorksOnMgt = new Button();
             btnDependentMgt = new Button();
             btnProjectMgt = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // btnAccountMgt
             // 
             btnAccountMgt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAccountMgt.Location = new Point(274, 56);
+            btnAccountMgt.Location = new Point(79, 96);
             btnAccountMgt.Name = "btnAccountMgt";
             btnAccountMgt.Size = new Size(277, 43);
             btnAccountMgt.TabIndex = 6;
@@ -49,7 +50,7 @@
             // btnEmployeeMgt
             // 
             btnEmployeeMgt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnEmployeeMgt.Location = new Point(274, 128);
+            btnEmployeeMgt.Location = new Point(79, 198);
             btnEmployeeMgt.Name = "btnEmployeeMgt";
             btnEmployeeMgt.Size = new Size(277, 43);
             btnEmployeeMgt.TabIndex = 7;
@@ -60,7 +61,7 @@
             // btnWorksOnMgt
             // 
             btnWorksOnMgt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnWorksOnMgt.Location = new Point(274, 344);
+            btnWorksOnMgt.Location = new Point(447, 302);
             btnWorksOnMgt.Name = "btnWorksOnMgt";
             btnWorksOnMgt.Size = new Size(277, 43);
             btnWorksOnMgt.TabIndex = 8;
@@ -71,7 +72,7 @@
             // btnDependentMgt
             // 
             btnDependentMgt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDependentMgt.Location = new Point(274, 200);
+            btnDependentMgt.Location = new Point(79, 302);
             btnDependentMgt.Name = "btnDependentMgt";
             btnDependentMgt.Size = new Size(277, 43);
             btnDependentMgt.TabIndex = 9;
@@ -82,7 +83,7 @@
             // btnProjectMgt
             // 
             btnProjectMgt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnProjectMgt.Location = new Point(274, 272);
+            btnProjectMgt.Location = new Point(447, 198);
             btnProjectMgt.Name = "btnProjectMgt";
             btnProjectMgt.Size = new Size(277, 43);
             btnProjectMgt.TabIndex = 10;
@@ -90,11 +91,23 @@
             btnProjectMgt.UseVisualStyleBackColor = true;
             btnProjectMgt.Click += btnProjectMgt_Click_1;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(447, 96);
+            button1.Name = "button1";
+            button1.Size = new Size(277, 43);
+            button1.TabIndex = 11;
+            button1.Text = "Department Management";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Management
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 451);
+            Controls.Add(button1);
             Controls.Add(btnProjectMgt);
             Controls.Add(btnDependentMgt);
             Controls.Add(btnWorksOnMgt);
@@ -112,5 +125,6 @@
         private Button btnWorksOnMgt;
         private Button btnDependentMgt;
         private Button btnProjectMgt;
+        private Button button1;
     }
 }
